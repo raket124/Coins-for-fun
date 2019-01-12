@@ -7,11 +7,13 @@ Vagrant.configure(2) do |config|
 		vb.memory = 2048
 		vb.cpus = 1
 	end
-  
+	
 	config.vm.provision :shell, path: "bootstrap.sh"
 
 	config.vm.define :Database do |database|
 		database.vm.provision :shell, path: "Database/bootstrap.sh"
+		#database.vm.provision :file, source: "Database/Sql", destination: "Sql"
+		#database.vm.provision :file, source: "Database/Data", destination: "Data"
 	end
 
 	#config.vm.define :Middleware do |middleware|
