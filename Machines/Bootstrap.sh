@@ -8,4 +8,4 @@ wget -qO- https://get.docker.com/ | sh
 
 #Pull images
 docker pull consul
-#docker pull gliderlabs/registrator
+docker pull gliderlabs/registrator

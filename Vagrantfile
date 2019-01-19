@@ -16,7 +16,6 @@ Vagrant.configure(2) do |config|
 		wd.vm.provision :shell, :path => "Machines/Server.sh"
 		
 		wd.vm.network :private_network, :ip => server_ip
-		wd.vm.network :forwarded_port, :guest => 8500, :host => 8500 
 	end
 	
 	config.vm.define :Database do |db|
