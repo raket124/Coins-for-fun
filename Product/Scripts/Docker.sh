@@ -1,11 +1,9 @@
 #!/usr/bin/env bash
 
-#Update machine
 apt-get update
-
-#Install docker
 wget -qO- https://get.docker.com/ | sh
 
-#Pull images
 docker pull consul
 docker pull gliderlabs/registrator
+docker pull jetty:9.4-jre11
+docker pull openjdk:11-jdk

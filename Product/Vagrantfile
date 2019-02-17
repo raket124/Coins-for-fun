@@ -1,0 +1,52 @@
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+
+server_ip = "192.168.50.4"
+database_username = "coin-admin"
+database_password = "fun-for-coins"
+
+
+Vagrant.configure(2) do |config|
+	config.vm.box = "ubuntu/trusty64"
+	config.vm.synced_folder ".", "/vagrant", :disabled => true
+	config.vm.provider "virtualbox" do |vb|
+		vb.memory = 2048
+		vb.cpus = 1
+	end
+	
+	
+	config.vm.provision :shell, :path => "Scripts/Docker.sh"
+	
+	config.vm.define :Watchdog do |wd|
+		wd.vm.provision :shell, :path => "Scripts/Server.sh"
+		
+		wd.vm.network :private_network, :ip => server_ip
+	end
+	
+	#config.vm.define :Database do |db|
+		#db.vm.provision :shell, :path => "Scripts/Client.sh", :args => [server_ip, "Database"]
+
+		#db.vm.network :private_network, :type => "dhcp"
+	#end
+
+	#config.vm.define :Middleware do |mw|
+		#mw.vm.provision :shell, :path => "Scripts/Client.sh", :args => [server_ip, "Middleware"]
+		#mw.vm.provision :shell, :path => "VMs/Middleware/Bootstrap.sh"
+		
+		#mw.vm.synced_folder "Machines/Middleware/Project", "/home/Project"
+
+		#mw.vm.network :private_network, :type => "dhcp"
+	#end
+
+	config.vm.define :Webserver do |ws|
+		ws.vm.synced_folder "VMs/Webserver/Project", "/home/Project"
+		
+		ws.vm.provision :shell, :path => "Scripts/Client.sh", :args => [server_ip, "Webserver"]
+		ws.vm.provision :shell, :path => "Scripts/Java-11-jdk.sh"
+		ws.vm.provision :shell, :path => "Scripts/Sbt.sh"
+		
+		ws.vm.provision :shell, :path => "VMs/Webserver/Bootstrap.sh"
+		
+		ws.vm.network :private_network, :type => "dhcp"
+	end
+end
