@@ -1,0 +1,10 @@
+Insert into Users Values (01, 'Gandalf', 'Password', 'imagelocation', 'Jay', 'Joiner', '1990-01-01', 'Male', 01);
+Insert into Users Values (02, 'Batman', 'Password', 'imagelocation', 'Mauricio', 'Mattingly', '1991-02-01', 'Male', 01);
+Insert into Users Values (03, 'Wonder woman', 'Password', 'imagelocation', 'Esther', 'Mongold', '1992-03-01', 'Female', 01);
+Insert into Users Values (04, 'Catwoman', 'Password', 'imagelocation', 'Glenda', 'Mell', '1993-04-01', 'Female', 19);
+Insert into Users Values (05, 'Mystique', 'Password', 'imagelocation', 'Caryn', 'Fritts', '1994-05-01', 'Female', 19);
+Insert into Users Values (06, 'Joker', 'Password', 'imagelocation', 'Lester', 'Villatoro', '1995-06-01', 'Male', 19);
+Insert into Users Values (07, 'Harley', 'Password', 'imagelocation', 'Eboni', 'Cotto', '1980-11-05', 'Female', 17);
+Insert into Users Values (08, 'Groot', 'Password', 'imagelocation', 'Isobel', 'Depew', '1980-11-10', 'Other', 17);
+Insert into Users Values (09, 'Hulk', 'Password', 'imagelocation', 'Luther', 'Cadieux', '1980-11-15', 'Male', 17);
+Insert into Users Values (10, 'She-Hulk', 'Password', 'imagelocation', 'Annamaria', 'Tempel', '1980-11-20', 'Female', 28);

@@ -2,8 +2,9 @@
 
 apt-get update
 wget -qO- https://get.docker.com/ | sh
+usermod -aG docker vagrant
 
 docker pull consul
 docker pull gliderlabs/registrator
-docker pull jetty:9.4-jre11
-docker pull openjdk:11-jdk
+#docker pull jetty:9.4-jre11
+#docker pull openjdk:11-jdk

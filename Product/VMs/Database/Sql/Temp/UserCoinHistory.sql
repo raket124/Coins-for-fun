@@ -1,0 +1,10 @@
+DROP TABLE IF EXISTS UserCoinHistory;
+CREATE TABLE UserCoinHistory (
+	Id INT NOT NULL AUTO_INCREMENT,
+	CoinId INT NOT NULL,
+	UserId INT NOT NULL,
+	Amount INT,
+	TimeStamp DATETIME,
+	
+	PRIMARY KEY (Id)
+);

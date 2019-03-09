@@ -8,11 +8,9 @@ lazy val root = (project in file("."))
 		
 		libraryDependencies ++= Seq(
 		
-			"com.orbitz.consul" % "consul-client" % "1.3.0",
 			"org.eclipse.jetty" % "jetty-server" % "9.4.14.v20181114",
 			"org.eclipse.jetty" % "jetty-servlet" % "9.4.14.v20181114",		
 			"mysql" % "mysql-connector-java" % "8.0.15",
-			"com.graphql-java" % "graphql-java" % "11.0"
 		
 		),
 		

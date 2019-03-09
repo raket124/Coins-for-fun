@@ -7,6 +7,8 @@ CREATE TABLE Users (
 	FirstName VARCHAR(255),
 	LastName VARCHAR(255),
 	DateOfBirth DATE,
+	Gender ENUM('Male', 'Female', 'Other'),
+	CountryId INT,
 	
 	PRIMARY KEY (Id)
 );

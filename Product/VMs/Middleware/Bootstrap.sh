@@ -34,3 +34,13 @@
 #docker:publishLocal
 
 #https://github.com/docker-library/openjdk/blob/258870647c5a4281c4cc81d0d17b6fd95bcf4141/11/jre/Dockerfile
+
+
+#docker run -d --name=Project1 --net=host -p 7070:7070 testing_something:0.1
+
+
+#docker run -d --name=Project1 -p 7070:7070 testing_something:0.1
+
+
+#docker run -d --name=Project1 testing_something:0.1
+#docker run -d --name=nginx2 nginx
