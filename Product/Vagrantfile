@@ -27,7 +27,6 @@ Vagrant.configure(2) do |config|
 	
 	config.vm.define :Database do |db|
 		db.vm.synced_folder "VMs/Database/Sql", "/home/Sql"
-		db.vm.synced_folder "VMs/Database/Data", "/home/Data"
 		db.vm.synced_folder "VMs/Database/Project", "/home/Project"
 	
 		db.vm.provision :shell, :path => "Scripts/Java-11-jdk.sh"

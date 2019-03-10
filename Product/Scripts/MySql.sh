@@ -11,6 +11,7 @@ docker run -d \
 	-e MYSQL_PASSWORD=$password \
 	-e MYSQL_DATABASE=$database \
 	-v /home/Sql:/docker-entrypoint-initdb.d \
+	-p 3306:3306 \
 	mysql
 	
 	
