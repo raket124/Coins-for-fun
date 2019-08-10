@@ -29,13 +29,13 @@ Vagrant.configure(2) do |config|
 		db.vm.synced_folder "VMs/Database/Sql", "/home/Sql"
 		db.vm.synced_folder "VMs/Database/Project", "/home/Project"
 	
-		db.vm.provision :shell, :path => "Scripts/Java-11-jdk.sh"
+		db.vm.provision :shell, :path => "Scripts/Java-8-jdk.sh"
 		db.vm.provision :shell, :path => "Scripts/Sbt.sh"
 	
 		#db.vm.provision :shell, :path => "Scripts/Consul-client.sh", :args => ["Database", server_ip]
 		#db.vm.provision :shell, :path => "Scripts/Registrator.sh"
 
-		db.vm.provision :shell, :path => "Scripts/MySql.sh", :args => [database_username, database_password]
+		db.vm.provision :shell, :path => "Scripts/Docker/MySql.sh", :args => [database_username, database_password]
 		
 		db.vm.network :private_network, :type => "dhcp"
 	end

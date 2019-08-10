@@ -1,5 +1,3 @@
-
-
 public class MySql extends Server {
     private String database;
 
