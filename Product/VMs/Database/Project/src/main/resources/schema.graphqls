@@ -8,6 +8,8 @@ type TTT {
     # coin(id: ID!) : Coin
     mySet: Set
     mySets: [Set]
+    myCountry: Country
+    myCountries: [Country]
 }
 
 type Set {
@@ -25,8 +27,8 @@ type Coin {
 
 type Country {
     id: ID!
+    code: String!
     name: String!
-    image: String!
 }
 
 type CoinCollection {

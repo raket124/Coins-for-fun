@@ -52,7 +52,11 @@ public class EmbeddedJettyMain {
             }
         };
 
-        Factories.ISet setFactory = new Factories.Static.Set();
+        Data.Singleton.SetType(Data.Type.Static);
+        Factories.ISet setFactory = Data.Singleton.DataSource().getSet();
+        Factories.ICountry countryFactory = Data.Singleton.DataSource().getCountry();
+
+        //Factories.ISet setFactory = new Factories.Static.Set();
         setFactory.Delete("2");
 
         String schema = readFile("src/main/resources/schema.graphqls", Charset.defaultCharset());
@@ -65,6 +69,8 @@ public class EmbeddedJettyMain {
                 .dataFetcher("myCoin", productsDataFetcher)
                 .dataFetcher("mySet", new StaticDataFetcher(setFactory.Spawn("3")))
                 .dataFetcher("mySets", new StaticDataFetcher(setFactory.SpawnAll()))
+                .dataFetcher("myCountry", new StaticDataFetcher(countryFactory.Spawn("19")))
+                .dataFetcher("myCountries", new StaticDataFetcher(countryFactory.SpawnAll()))
             )
             .build();
 
@@ -76,7 +82,7 @@ public class EmbeddedJettyMain {
         GraphQL build = GraphQL.newGraphQL(graphQLSchema).build();
 
         // ExecutionResult executionResult = build.execute("{myCoin(match: \"Hi\"){id name set{id name} country{name}}}");
-        ExecutionResult executionResult = build.execute("{mySets{id name}}");
+        ExecutionResult executionResult = build.execute("{myCountries{id code name}}");
 
         System.out.println(schema);
         System.out.println("___________________");
