@@ -4,12 +4,12 @@ schema {
 
 type TTT {
     version: String
-    myCoin(match: String): Coin
-    # coin(id: ID!) : Coin
     mySet: Set
     mySets: [Set]
     myCountry: Country
     myCountries: [Country]
+    myCoin: Coin
+    myCoins: [Coin]
 }
 
 type Set {

@@ -1,5 +1,5 @@
 package Factories;
 
-public interface ICountry extends IFactory<Objects.Country>{
+public interface ICountry extends IFactory<Records.Objects.Country>{
 
 }

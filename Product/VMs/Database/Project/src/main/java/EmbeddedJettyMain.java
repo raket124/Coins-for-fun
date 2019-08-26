@@ -55,9 +55,7 @@ public class EmbeddedJettyMain {
         Data.Singleton.SetType(Data.Type.Static);
         Factories.ISet setFactory = Data.Singleton.DataSource().getSet();
         Factories.ICountry countryFactory = Data.Singleton.DataSource().getCountry();
-
-        //Factories.ISet setFactory = new Factories.Static.Set();
-        setFactory.Delete("2");
+        Factories.ICoin coinFactory = Data.Singleton.DataSource().getCoin();
 
         String schema = readFile("src/main/resources/schema.graphqls", Charset.defaultCharset());
         SchemaParser schemaParser = new SchemaParser();
@@ -66,11 +64,13 @@ public class EmbeddedJettyMain {
         RuntimeWiring runtimeWiring = newRuntimeWiring()
             .type("TTT", typeWiring -> typeWiring
                 .dataFetcher("version", new StaticDataFetcher("0.1"))
-                .dataFetcher("myCoin", productsDataFetcher)
+                // .dataFetcher("myCoin", productsDataFetcher)
                 .dataFetcher("mySet", new StaticDataFetcher(setFactory.Spawn("3")))
                 .dataFetcher("mySets", new StaticDataFetcher(setFactory.SpawnAll()))
                 .dataFetcher("myCountry", new StaticDataFetcher(countryFactory.Spawn("19")))
                 .dataFetcher("myCountries", new StaticDataFetcher(countryFactory.SpawnAll()))
+                .dataFetcher("myCoin", new StaticDataFetcher(coinFactory.Spawn("5")))
+                .dataFetcher("myCoins", new StaticDataFetcher(coinFactory.SpawnAll()))
             )
             .build();
 
@@ -82,7 +82,8 @@ public class EmbeddedJettyMain {
         GraphQL build = GraphQL.newGraphQL(graphQLSchema).build();
 
         // ExecutionResult executionResult = build.execute("{myCoin(match: \"Hi\"){id name set{id name} country{name}}}");
-        ExecutionResult executionResult = build.execute("{myCountries{id code name}}");
+        // ExecutionResult executionResult = build.execute("{myCountries{id code name}}");
+        ExecutionResult executionResult = build.execute("{myCoins{id country{name} set{name} year}}");
 
         System.out.println(schema);
         System.out.println("___________________");

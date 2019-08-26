@@ -3,7 +3,7 @@ package Factories.Static;
 import java.util.List;
 import java.util.ArrayList;
 
-public class Factory<T extends Objects.IdObject> implements Factories.IFactory<T>{
+public class Factory<T extends Records.IdObject> implements Factories.IFactory<T>{
 
     protected List<T> data;
 
